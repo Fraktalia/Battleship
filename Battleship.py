@@ -1,10 +1,25 @@
 def main():
-    player = "X"
-    board = init_board()
-    display_board(board)
-    move = get_move(board)
-    mark(board,move[0],move[1],player)
-    display_board(board)
+    ships_1 = 5
+    ships_2 = 5
+    board_1 = init_board()
+    board_2 = init_board_1()
+    while ships_1 > 0:
+        print ("PLAYER 1")
+        player = "X"
+        display_board(board_1)
+        move = get_move(board_1)
+        board_1 = mark(board_1,move[0],move[1],player)
+        display_board(board_1)
+        ships_1 = ships_1 - 1
+
+    while ships_2 > 0:
+        print ("PLAYER 2")
+        player = "X"
+        display_board(board_2)
+        move = get_move(board_1)
+        board_2 = mark(board_2,move[0],move[1],player)
+        display_board(board_2)
+        ships_2 = ships_2 - 1
 
 
 def init_board():
@@ -15,6 +30,13 @@ def init_board():
             ["0", "0", "0", "0", "0",] ]
     return board
 
+def init_board_1():
+    board = [ ["0", "0", "0", "0", "0"],
+            ["0", "0", "0", "0", "0"], 
+            ["0", "0", "0", "0", "0"], 
+            ["0", "0", "0", "0", "0"],
+            ["0", "0", "0", "0", "0",] ]
+    return board
 
 def display_board(board):
 
