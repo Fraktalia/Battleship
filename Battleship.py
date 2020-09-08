@@ -62,7 +62,8 @@ def get_move(board):
         coordinates = row_and_col(player_input)
         if len(player_input) > 2:
             row = -1
-
+        if placement_check(board, player_input) == False:
+            print('Your ship is too close! Chose another location!')
         if coordinates[0] < 0 or coordinates[1] < 0:
             print("\nYou're out of range!")
         elif board[coordinates[0]][coordinates[1]] == "X":
@@ -105,6 +106,23 @@ def mark(board, row, col, player):
     board[row][col]=player
     return board
     
+
+def placement_check(board, player):
+    row = 5
+    col = 5
+    for i in range(row-1):
+        for j in range(col-1):
+            if board[i][j] == player and board[i+1][j] == player:
+                return False
+            elif board[i][j] == player and board[i][j+1] == player:
+                return False
+            else: 
+                return True
+        
+        
+
+
+
 
 if __name__ == "__main__":
     main()
