@@ -14,10 +14,11 @@ def main():
         move = get_move(board_1)
         board_1 = mark(board_1,move[0],move[1],player)
         ships_1 = ships_1 - 1
-
-    time.sleep(0.5) 
+    display_board(board_1)
+    
+    time.sleep(3) 
     os.system("cls || clear")
-    print ("Next player's placement phase. Please, press any button.")
+    print ("\nNext player's placement phase. Please, press any button.")
     input ("")
     time.sleep(0.5)  
 
@@ -47,6 +48,7 @@ def init_board_1():
             ["0", "0", "0", "0", "0",] ]
     return board
 
+
 def display_board(board):
 
     print('    A', '  B', '  C', '  D', '  E\n')
@@ -58,7 +60,7 @@ def display_board(board):
 def get_move(board):
     is_input_valid = False
     while (not is_input_valid):
-        player_input = input("Enter the field, e.g. A1:").upper()
+        player_input = input("\nEnter the field, e.g. A1:").upper()
         coordinates = row_and_col(player_input)
         if len(player_input) > 2:
             row = -1
@@ -71,6 +73,7 @@ def get_move(board):
             is_input_valid = True
 
     return coordinates
+
 
 def row_and_col(player_input):
 
@@ -100,6 +103,7 @@ def row_and_col(player_input):
         else:
             row = -1
         return row, col
+
 
 def mark(board, row, col, player):
     board[row][col]=player
