@@ -1,3 +1,5 @@
+import time
+
 def main():
     ships_1 = 5
     ships_2 = 5
@@ -5,20 +7,22 @@ def main():
     board_2 = init_board_1()
     while ships_1 > 0:
         print ("PLAYER 1")
-        player = "X"
         display_board(board_1)
+        player = "X"
         move = get_move(board_1)
         board_1 = mark(board_1,move[0],move[1],player)
-        display_board(board_1)
         ships_1 = ships_1 - 1
+
+    time.sleep(0.5)  
+    print ("DUPA")
+    time.sleep(0.5)  
 
     while ships_2 > 0:
         print ("PLAYER 2")
-        player = "X"
         display_board(board_2)
+        player = "X"
         move = get_move(board_2)
         board_2 = mark(board_2,move[0],move[1],player)
-        display_board(board_2)
         ships_2 = ships_2 - 1
 
 
@@ -50,20 +54,18 @@ def get_move(board):
     is_input_valid = False
     while (not is_input_valid):
         player_input = input("Enter the field, e.g. A1:").upper()
-
         coordinates = row_and_col(player_input)
-
         if len(player_input) > 2:
             row = -1
 
         if coordinates[0] < 0 or coordinates[1] < 0:
             print("\nYou're out of range!")
-
-        elif board[coordinates[0]][coordinates[1]] != "0":
+        elif board[coordinates[0]][coordinates[1]] == "X":
             print("\nHere you already tried, try again!")
         else:
             is_input_valid = True
-        return coordinates
+
+    return coordinates
 
 def row_and_col(player_input):
 
