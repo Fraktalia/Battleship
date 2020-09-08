@@ -8,7 +8,7 @@ def main():
     board_2 = init_board_1()
     while ships_1 > 0:
         print ("PLAYER 1")
-        os.system('clear')
+        os.system("cls || clear")
         display_board(board_1)
         player = "X"
         move = get_move(board_1)
@@ -16,14 +16,14 @@ def main():
         ships_1 = ships_1 - 1
 
     time.sleep(0.5) 
-    os.system('clear') 
+    os.system("cls || clear")
     print ("Next player's placement phase. Please, press any button.")
     input ("")
     time.sleep(0.5)  
 
     while ships_2 > 0:
         print ("PLAYER 2")
-        os.system('clear')
+        os.system("cls || clear")
         display_board(board_2)
         player = "X"
         move = get_move(board_2)
