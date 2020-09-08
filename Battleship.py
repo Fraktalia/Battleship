@@ -16,7 +16,7 @@ def main():
         print ("PLAYER 2")
         player = "X"
         display_board(board_2)
-        move = get_move(board_1)
+        move = get_move(board_2)
         board_2 = mark(board_2,move[0],move[1],player)
         display_board(board_2)
         ships_2 = ships_2 - 1
@@ -49,8 +49,23 @@ def display_board(board):
 def get_move(board):
     is_input_valid = False
     while (not is_input_valid):
-
         player_input = input("Enter the field, e.g. A1:").upper()
+
+        coordinates = row_and_col(player_input)
+
+        if len(player_input) > 2:
+            row = -1
+
+        if coordinates[0] < 0 or coordinates[1] < 0:
+            print("\nYou're out of range!")
+
+        elif board[coordinates[0]][coordinates[1]] != "0":
+            print("\nHere you already tried, try again!")
+        else:
+            is_input_valid = True
+        return coordinates
+
+def row_and_col(player_input):
 
         if "A" in player_input:
             col = 0
@@ -77,18 +92,7 @@ def get_move(board):
             row = 4
         else:
             row = -1
-
-        if len(player_input) > 2:
-            row = -1
-
-        if row < 0 or col < 0:
-            print("\nYou're out of range!")
-        elif board[row][col] != "0":
-            print("\nHere you already tried, try again!")
-        else:
-            is_input_valid = True
-
-    return row, col
+        return row, col
 
 def mark(board, row, col, player):
     board[row][col]=player
